@@ -1,11 +1,25 @@
-# STATIC
+# atjhoendz.github.io
 
-**This directory is not required, you can delete it if you don't want to use it.**
+Personal site and portfolio of Moh. Achun Armando, built with [Astro](https://astro.build) and Tailwind CSS v4.
 
-This directory contains your static files.
-Each file inside this directory is mapped to `/`.
-Thus you'd want to delete this README.md before deploying to production.
+## Editing content
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+All content lives in `src/data/`:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#static).
+- `profile.ts`: name, role, summary, email, social links
+- `projects.ts`: work and projects (newest first)
+- `skills.ts`: skill groups
+
+## Development
+
+```sh
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # outputs to dist/
+npm run preview
+```
+
+## Deployment
+
+Every push to `master` builds and deploys through `.github/workflows/deploy.yml`.
+GitHub Pages must be set to **Settings → Pages → Source: GitHub Actions**.
