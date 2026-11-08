@@ -1,10 +1,31 @@
 ---
-interface Props { group: string; items: string[] }
-const { group, items } = Astro.props;
+interface Props { group: string; items: string[]; color: string; index: number }
+const { group, items, color, index } = Astro.props;
 ---
-<div class="grid gap-2 sm:grid-cols-[7rem_1fr] sm:gap-6">
-  <h3 class="pt-1 font-mono text-xs text-muted">{group}</h3>
-  <ul class="flex flex-wrap gap-2">
-    {items.map((item) => <li class="rounded-md border border-line px-2.5 py-0.5 text-sm">{item}</li>)}
+<div
+  data-reveal
+  style={`--c:${color};--i:${index % 2}`}
+  class="rounded-2xl border border-line bg-card p-5 shadow-soft"
+>
+  <h3 class="flex items-center gap-2 text-sm font-semibold">
+    <span class="size-2.5 rounded-full" style="background:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 20%,transparent)"></span>
+    {group}
+  </h3>
+  <ul class="mt-4 flex flex-wrap gap-2">
+    {items.map((item) => (
+      <li class="skill-tag inline-flex items-center gap-1.5 rounded-full border border-transparent px-3 py-1 text-sm transition hover:scale-105">
+        <span class="size-1.5 rounded-full" style="background:var(--c)"></span>
+        {item}
+      </li>
+    ))}
   </ul>
 </div>
+
+<style>
+  .skill-tag {
+    background: color-mix(in srgb, var(--c) 12%, transparent);
+  }
+  .skill-tag:hover {
+    border-color: var(--c);
+  }
+</style>

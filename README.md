@@ -13,10 +13,10 @@ All content lives in `src/data/`:
 ## Development
 
 ```sh
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # outputs to dist/
-npm run preview
+bun install
+bun run dev      # http://localhost:4321
+bun run build    # outputs to dist/
+bun run preview
 ```
 
 ## Deployment
