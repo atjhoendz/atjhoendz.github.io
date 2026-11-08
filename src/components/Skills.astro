@@ -1,0 +1,76 @@
+---
+import TechIcon from './TechIcon.astro';
+import { getTechIcon } from '../data/techIcons';
+import { services, coreStack, alsoWorkedWith } from '../data/skills';
+
+const serviceIcons = {
+  server: '<rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/>',
+  layout: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/>',
+  cloud: '<path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5z"/><path d="m10 14 2-2 2 2M12 12v5"/>',
+};
+---
+<div>
+  <div data-reveal>
+    <p class="text-2xl font-semibold tracking-tight">What I can do for you</p>
+    <p class="mt-1 text-muted">From idea to production: I design, build and ship the whole thing.</p>
+  </div>
+
+  <ul class="mt-8 grid gap-5 sm:grid-cols-3">
+    {services.map((s, i) => (
+      <li
+        data-reveal
+        style={`--c:${s.color};--i:${i}`}
+        class="group flex flex-col rounded-2xl border border-line bg-card p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift"
+      >
+        <span class="service-icon grid size-10 place-items-center rounded-xl transition group-hover:scale-110 group-hover:-rotate-6">
+          <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={serviceIcons[s.icon]} />
+        </span>
+        <h3 class="mt-4 font-semibold">{s.title}</h3>
+        <p class="mt-1.5 text-sm text-muted">{s.pitch}</p>
+        <ul class="mt-auto flex flex-wrap gap-1.5 pt-4">
+          {s.tools.map((t) => (
+            <li class="tool-chip rounded-full px-2.5 py-0.5 text-xs font-medium">{t}</li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+
+  <h3 data-reveal class="mt-12 font-mono text-xs uppercase tracking-[0.2em] text-muted">Daily drivers</h3>
+  <ul class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+    {coreStack.map((t, i) => (
+      <li
+        data-reveal
+        style={`--i:${i % 4};--b:${getTechIcon(t) ? `#${getTechIcon(t)!.hex}` : 'var(--accent)'}`}
+        class="tech-tile flex items-center gap-2.5 rounded-xl border border-line bg-card px-3 py-2.5 text-sm font-medium shadow-soft transition duration-200 hover:-translate-y-0.5"
+      >
+        <TechIcon name={t} />
+        {t}
+      </li>
+    ))}
+  </ul>
+
+  <h3 data-reveal class="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-muted">Also worked with</h3>
+  <ul data-reveal class="mt-4 flex flex-wrap gap-2">
+    {alsoWorkedWith.map((t) => (
+      <li class="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-sm text-muted transition hover:border-accent hover:text-fg">
+        <TechIcon name={t} class="size-3.5" />
+        {t}
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .service-icon {
+    color: var(--c);
+    background: color-mix(in srgb, var(--c) 14%, transparent);
+  }
+  .tool-chip {
+    color: color-mix(in srgb, var(--c) 70%, var(--fg));
+    background: color-mix(in srgb, var(--c) 10%, transparent);
+  }
+  .tech-tile:hover {
+    border-color: color-mix(in srgb, var(--b) 60%, transparent);
+  }
+</style>

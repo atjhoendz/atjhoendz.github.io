@@ -1,0 +1,30 @@
+---
+import { getTechIcon, isDarkBrand } from '../data/techIcons';
+interface Props { name: string; class?: string }
+const { name, class: cls = 'size-5' } = Astro.props;
+const icon = getTechIcon(name);
+const dark = icon ? isDarkBrand(icon.hex) : false;
+---
+{icon ? (
+  <svg
+    viewBox="0 0 24 24"
+    class:list={[cls, 'shrink-0', dark && 'dark-brand']}
+    style={`--brand:#${icon.hex}`}
+    aria-hidden="true"
+  >
+    <path d={icon.path} fill="currentColor"></path>
+  </svg>
+) : (
+  <span class:list={[cls, 'grid shrink-0 place-items-center']} aria-hidden="true">
+    <span class="size-2 rounded-full bg-accent"></span>
+  </span>
+)}
+
+<style>
+  svg {
+    color: var(--brand);
+  }
+  :global([data-theme='dark']) svg.dark-brand {
+    color: var(--fg);
+  }
+</style>

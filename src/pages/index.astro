@@ -3,11 +3,10 @@ import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ExperienceItem from '../components/ExperienceItem.astro';
-import SkillGroup from '../components/SkillGroup.astro';
+import Skills from '../components/Skills.astro';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
 import { experience } from '../data/experience';
-import { skills } from '../data/skills';
 
 const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
 ---
@@ -38,22 +37,20 @@ const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
     </ul>
   </section>
 
-  <Section id="work" title="Work" num="01">
+  <Section id="skills" title="Skills" num="01">
+    <Skills />
+  </Section>
+
+  <Section id="work" title="Work" num="02">
     <ol>
       {experience.map((e, i) => <ExperienceItem item={e} index={i} />)}
     </ol>
   </Section>
 
-  <Section id="projects" title="Projects" num="02">
+  <Section id="projects" title="Projects" num="03">
     <ol class="grid gap-5 sm:grid-cols-2">
       {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
     </ol>
-  </Section>
-
-  <Section id="skills" title="Skills" num="03">
-    <div class="grid gap-5 sm:grid-cols-2">
-      {skills.map((s, i) => <SkillGroup group={s.group} items={s.items} color={s.color} index={i} />)}
-    </div>
   </Section>
 
   <Section id="contact" title="Contact" num="04">
