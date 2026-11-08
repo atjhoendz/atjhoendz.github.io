@@ -4,6 +4,7 @@ import { profile } from '../data/profile';
 
 const links = [
   { href: '/#work', label: 'Work' },
+  { href: '/#projects', label: 'Projects' },
   { href: '/#skills', label: 'Skills' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -13,7 +14,7 @@ const links = [
     <span class="grid size-8 place-items-center rounded-lg bg-accent font-mono text-xs font-bold text-white transition group-hover:rotate-6 dark:text-[#1e2230]">MA</span>
     <span class="hidden sm:inline">{profile.shortName}</span>
   </a>
-  <nav class="flex items-center gap-2 text-sm sm:gap-5">
+  <nav class="flex items-center gap-2 text-[13px] sm:gap-5 sm:text-sm">
     <ul class="flex items-center gap-3 sm:gap-5">
       {links.map((l) => <li><a href={l.href} class="text-muted hover:text-accent">{l.label}</a></li>)}
     </ul>

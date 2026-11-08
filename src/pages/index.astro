@@ -2,9 +2,11 @@
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
 import SkillGroup from '../components/SkillGroup.astro';
 import { profile } from '../data/profile';
 import { projects } from '../data/projects';
+import { experience } from '../data/experience';
 import { skills } from '../data/skills';
 
 const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
@@ -37,18 +39,24 @@ const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
   </section>
 
   <Section id="work" title="Work" num="01">
+    <ol>
+      {experience.map((e, i) => <ExperienceItem item={e} index={i} />)}
+    </ol>
+  </Section>
+
+  <Section id="projects" title="Projects" num="02">
     <ol class="grid gap-5 sm:grid-cols-2">
       {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
     </ol>
   </Section>
 
-  <Section id="skills" title="Skills" num="02">
+  <Section id="skills" title="Skills" num="03">
     <div class="grid gap-5 sm:grid-cols-2">
       {skills.map((s, i) => <SkillGroup group={s.group} items={s.items} color={s.color} index={i} />)}
     </div>
   </Section>
 
-  <Section id="contact" title="Contact" num="03">
+  <Section id="contact" title="Contact" num="04">
     <div
       data-reveal
       class="relative overflow-hidden rounded-3xl border border-line p-8 text-center shadow-soft sm:p-12"

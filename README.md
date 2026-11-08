@@ -7,7 +7,8 @@ Personal site and portfolio of Moh. Achun Armando, built with [Astro](https://as
 All content lives in `src/data/`:
 
 - `profile.ts`: name, role, summary, email, social links
-- `projects.ts`: work and projects (newest first)
+- `experience.ts`: work experience timeline (newest first)
+- `projects.ts`: projects (newest first)
 - `skills.ts`: skill groups
 
 ## Development
