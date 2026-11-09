@@ -2,7 +2,7 @@
 // unknown names still work and just get a colored dot instead of a logo.
 
 export interface Service {
-  icon: 'server' | 'layout' | 'cloud';
+  icon: 'server' | 'search' | 'cloud';
   title: string;
   color: string;
   pitch: string;
@@ -12,32 +12,32 @@ export interface Service {
 export const services: Service[] = [
   {
     icon: 'server',
-    title: 'Backend & APIs',
+    title: 'Backend & Microservices',
     color: '#2a9d8f',
-    pitch: 'Reliable REST and real-time services, from data modelling to background jobs and queues.',
-    tools: ['NestJS', 'Express.js', 'PostgreSQL', 'BullMQ'],
+    pitch: 'Go services and GraphQL APIs built for scale, with event-driven messaging and safe, zero-downtime migrations.',
+    tools: ['Go', 'GraphQL', 'NATS JetStream', 'Cloud Functions'],
   },
   {
-    icon: 'layout',
-    title: 'Web Applications',
+    icon: 'search',
+    title: 'Search & Data',
     color: '#f2643d',
-    pitch: 'Fast, responsive web apps and dashboards your users will enjoy using.',
-    tools: ['Vue.js', 'Nuxt', 'Tailwind CSS'],
+    pitch: 'Fast, cost-efficient search and data pipelines, from tuning feed search to keeping stores in sync.',
+    tools: ['Typesense', 'Manticore Search', 'CockroachDB', 'Bigtable'],
   },
   {
     icon: 'cloud',
-    title: 'DevOps & Deployment',
+    title: 'Cloud & Integrations',
     color: '#e9a23b',
-    pitch: 'Containerised, reproducible deployments with CI/CD and sensible server setup.',
-    tools: ['Docker', 'Nginx', 'Linux', 'CI/CD'],
+    pitch: 'Running workloads on Google Cloud and Kubernetes, plus integrations with social media and app-store APIs.',
+    tools: ['Google Cloud', 'Kubernetes', 'Docker', 'Social APIs'],
   },
 ];
 
 /** Tools you use daily and are strongest in. */
-export const coreStack = ['TypeScript', 'NestJS', 'Node.js', 'Vue.js', 'Nuxt', 'PostgreSQL', 'Docker', 'Tailwind CSS'];
+export const coreStack = ['Go', 'GraphQL', 'NATS', 'Typesense', 'Manticore Search', 'CockroachDB', 'Google Cloud', 'Kubernetes', 'Docker'];
 
 /** Tools you've shipped with before. */
 export const alsoWorkedWith = [
-  'Express.js', 'Laravel', 'Lumen', 'MongoDB', 'MySQL', 'Socket.IO', 'BullMQ',
-  'Hyperledger Fabric', 'Vuetify', 'Bootstrap', 'Nginx', 'Apache', 'Git', 'Ubuntu',
+  'Elasticsearch', 'Bigtable', 'Python', 'JavaScript', 'TypeScript', 'Node.js', 'NestJS',
+  'Vue.js', 'Nuxt', 'PostgreSQL', 'MongoDB', 'MySQL', 'Laravel', 'Git',
 ];

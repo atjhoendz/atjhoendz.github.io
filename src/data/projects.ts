@@ -18,7 +18,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    year: '2021 – now',
+    year: '2021',
     title: 'Velocity League',
     image: velocity,
     role: 'Backend Developer',
