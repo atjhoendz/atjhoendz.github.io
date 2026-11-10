@@ -8,6 +8,7 @@ import { profile } from '../data/profile';
 import { projects } from '../data/projects';
 import { experience } from '../data/experience';
 
+const VISIBLE_PROJECTS = 3;
 const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
 ---
 <Base>
@@ -47,10 +48,17 @@ const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
     </ol>
   </Section>
 
-  <Section id="projects" title="Projects" num="03">
+  <Section id="projects" title="Early Projects" num="03">
     <ol class="grid gap-5 sm:grid-cols-2">
-      {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
+      {projects.map((p, i) => <ProjectCard project={p} index={i} extra={i >= VISIBLE_PROJECTS} />)}
     </ol>
+    {projects.length > VISIBLE_PROJECTS && (
+      <div class="mt-8 text-center">
+        <button id="projects-toggle" type="button" class="pill" aria-expanded="false">
+          Show {projects.length - VISIBLE_PROJECTS} more <span aria-hidden="true">↓</span>
+        </button>
+      </div>
+    )}
   </Section>
 
   <Section id="contact" title="Contact" num="04">
@@ -59,20 +67,34 @@ const profileLinks = profile.socials.filter((s) => s.label !== 'Facebook');
       class="relative overflow-hidden rounded-3xl border border-line p-8 text-center shadow-soft sm:p-12"
       style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 12%,var(--card)),color-mix(in srgb,var(--accent-2) 12%,var(--card)))"
     >
-      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl">Let's build something together</h3>
+      <h3 class="text-2xl font-bold tracking-tight sm:text-3xl">Let's work together</h3>
       <p class="mx-auto mt-3 max-w-[44ch] text-muted">
-        Have a project or an opportunity in mind? My inbox is always open.
+        Open to backend engineering roles and interesting projects. My inbox is always open.
       </p>
       <a href={`mailto:${profile.email}`} class="btn-primary mt-6 px-6 py-2.5 text-base">Say hello <span aria-hidden="true">→</span></a>
       <p class="mt-3 text-sm text-muted">{profile.email}</p>
       <ul class="mt-6 flex flex-wrap justify-center gap-2">
-        {profile.socials.map((s) => (
+        {profileLinks.map((s) => (
           <li><a href={s.url} target="_blank" rel="noopener noreferrer" class="pill">{s.label}</a></li>
         ))}
       </ul>
     </div>
   </Section>
 </Base>
+
+<script>
+  const toggle = document.getElementById('projects-toggle');
+  if (toggle) {
+    const extras = document.querySelectorAll<HTMLElement>('[data-extra]');
+    const label = toggle.innerHTML;
+    toggle.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      extras.forEach((el) => (el.hidden = !open));
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.innerHTML = open ? 'Show less <span aria-hidden="true">↑</span>' : label;
+    });
+  }
+</script>
 
 <style>
   @media (prefers-reduced-motion: no-preference) {

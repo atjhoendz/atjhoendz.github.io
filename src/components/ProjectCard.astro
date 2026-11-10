@@ -1,11 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import type { Project } from '../data/projects';
-interface Props { project: Project; index: number }
-const { project: p, index } = Astro.props;
+interface Props { project: Project; index: number; extra?: boolean }
+const { project: p, index, extra = false } = Astro.props;
 ---
 <li
   data-reveal
+  data-extra={extra || undefined}
+  hidden={extra}
   style={`--i:${index % 2}`}
   class="group relative flex flex-col overflow-hidden rounded-2xl border border-line bg-card shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-lift"
 >

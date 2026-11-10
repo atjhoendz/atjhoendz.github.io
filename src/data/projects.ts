@@ -2,7 +2,6 @@ import type { ImageMetadata } from 'astro';
 import velocity from '../assets/projects/velocity.png';
 import hlFabric from '../assets/projects/hl-fabric.png';
 import prabu from '../assets/projects/prabu.png';
-import qrary from '../assets/projects/qrary.png';
 import portalUnpad from '../assets/projects/portalunpad.png';
 import himatif from '../assets/projects/himatif.png';
 
@@ -30,7 +29,7 @@ export const projects: Project[] = [
     title: 'Blockchain Project using Hyperledger Fabric',
     image: hlFabric,
     role: 'Full Stack Developer',
-    description: 'My undergraduate final project.',
+    description: 'E-budgeting system on a permissioned blockchain, with chaincode and a NestJS API. My undergraduate final project.',
     stack: ['Hyperledger Fabric', 'Hyperledger Explorer', 'VueJS', 'NestJS'],
     url: 'https://github.com/atjhoendz/backend-chaincode-ebudgeting',
   },
@@ -41,15 +40,6 @@ export const projects: Project[] = [
     role: 'Frontend Developer',
     description: 'Universitas Padjadjaran new student ceremonial website.',
     stack: ['VueJS', 'Vuetify'],
-  },
-  {
-    year: '2020',
-    title: 'Qrary',
-    image: qrary,
-    role: 'Backend Developer',
-    description: 'A RESTful API to handle book browsing and lending in the Unpad library.',
-    stack: ['ExpressJS', 'MongoDB', 'Docker'],
-    url: 'https://github.com/atjhoendz/qrary_backend',
   },
   {
     year: '2019',

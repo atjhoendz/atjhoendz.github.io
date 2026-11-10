@@ -62,7 +62,6 @@ export const experience: Experience[] = [
           'Built a video publishing platform that uploads vertical videos to Instagram, Facebook, X, TikTok and YouTube to scale content production.',
           'Implemented content personalization with the Data Science team on Bigtable.',
           'Built a Quick Count platform that reads from Google Sheets and serves results fast on kumparan.',
-          'Improved performance and scalability across existing features.',
         ],
       },
       {
@@ -90,6 +89,6 @@ export const experience: Experience[] = [
         ],
       },
     ],
-    stack: ['Go', 'GraphQL', 'NATS JetStream', 'Elasticsearch', 'CockroachDB', 'Manticore Search', 'Google Cloud', 'Kubernetes', 'Bigtable', 'Python'],
+    stack: ['Go', 'GraphQL', 'NATS JetStream', 'Elasticsearch', 'CockroachDB', 'Manticore Search', 'Typesense', 'Google Cloud', 'Kubernetes', 'Bigtable', 'Python'],
   },
 ];
